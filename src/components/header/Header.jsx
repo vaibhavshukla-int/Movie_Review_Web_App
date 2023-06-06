@@ -1,4 +1,4 @@
-import './Header.scss';
+import './header.scss';
 
 const Header = () => {
   return <h2>Header</h2>;
