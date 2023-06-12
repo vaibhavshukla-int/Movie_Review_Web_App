@@ -1,18 +1,18 @@
-import { useEffect, useState } from 'react';
-import { HiOutlineSearch } from 'react-icons/hi';
-import { SlMenu } from 'react-icons/sl';
-import { VscChromeClose } from 'react-icons/vsc';
-import ContentWrapper from '../contentWrapper/ContentWrapper';
-import logo from '../../assets/movix-logo.svg';
-import './header.scss';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { HiOutlineSearch } from "react-icons/hi";
+import { SlMenu } from "react-icons/sl";
+import { VscChromeClose } from "react-icons/vsc";
+import ContentWrapper from "../contentWrapper/ContentWrapper";
+import logo from "../../assets/movix-logo.svg";
+import "./header.scss";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Header = () => {
-  const [show, setShow] = useState('top');
+  const [show, setShow] = useState("top");
   const [lastScrollY, setLastScrollY] = useState(0);
   const [mobileMenu, setMobileMenu] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -24,20 +24,20 @@ const Header = () => {
   const controlNavbar = () => {
     if (window.scrollY > 200) {
       if (window.scrollY > lastScrollY && !mobileMenu) {
-        setShow('hide');
+        setShow("hide");
       } else {
-        setShow('show');
+        setShow("show");
       }
     } else {
-      setShow('top');
+      setShow("top");
     }
     setLastScrollY(window.scrollY);
   };
   // for scrolling effect
   useEffect(() => {
-    window.addEventListener('scroll', controlNavbar);
+    window.addEventListener("scroll", controlNavbar);
     return () => {
-      window.removeEventListener('scroll', controlNavbar);
+      window.removeEventListener("scroll", controlNavbar);
     };
   }, [lastScrollY]);
 
@@ -52,36 +52,36 @@ const Header = () => {
   };
 
   const searchQueryHandler = (e) => {
-    if (e.key === 'Enter' && query.length > 0) {
+    if (e.key === "Enter" && query.length > 0) {
       navigate(`/search/${query}`);
     }
     // to close automatic after search operation done
     setTimeout(() => {
       setShowSearch(false);
-    }, 1000);
+    }, 3000);
   };
 
   const navigationHandler = (type) => {
-    if (type === 'movie') {
-      navigate('/explore/movie');
+    if (type === "movie") {
+      navigate("/explore/movie");
     } else {
-      navigate('/explore/tv');
+      navigate("/explore/tv");
     }
     setMobileMenu(false);
   };
 
   return (
-    <header className={`header ${mobileMenu ? 'mobileView' : ''} ${show}`}>
+    <header className={`header ${mobileMenu ? "mobileView" : ""} ${show}`}>
       <ContentWrapper>
-        <div className="logo">
+        <div className="logo" onClick={() => navigate("/")}>
           <img src={logo} alt="Logo of Movix" />
         </div>
 
         <ul className="menuItems">
-          <li className="menuItem" onClick={() => navigationHandler('movie')}>
+          <li className="menuItem" onClick={() => navigationHandler("movie")}>
             Movies
           </li>
-          <li className="menuItem" onClick={() => navigationHandler('tv')}>
+          <li className="menuItem" onClick={() => navigationHandler("tv")}>
             TV Shows
           </li>
           <li className="menuItem">

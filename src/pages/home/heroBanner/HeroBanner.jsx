@@ -1,18 +1,18 @@
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import './heroBanner.scss';
-import useFetch from '../../../hooks/useFetch';
-import Image from '../../../components/lazyLoadImage/Image';
-import ContentWrapper from '../../../components/contentWrapper/ContentWrapper';
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import "./heroBanner.scss";
+import useFetch from "../../../hooks/useFetch";
+import Image from "../../../components/lazyLoadImage/Image";
+import ContentWrapper from "../../../components/contentWrapper/ContentWrapper";
 
 const HeroBanner = () => {
-  const [background, setBackground] = useState('');
-  const [query, setQuery] = useState('');
+  const [background, setBackground] = useState("");
+  const [query, setQuery] = useState("");
   const navigate = useNavigate();
   const { url } = useSelector((state) => state.home);
 
-  const { data, loading, error } = useFetch('/movie/upcoming');
+  const { data, loading } = useFetch("/movie/upcoming");
 
   useEffect(() => {
     const backgroundImage =
@@ -23,9 +23,8 @@ const HeroBanner = () => {
   }, [data]);
 
   const searchQueryHandler = (event) => {
-    if (event.key === 'Enter' && query.length > 0) {
+    if (event.key === "Enter" && query.length > 0) {
       navigate(`/search/${query}`);
-      console.log('hello');
     }
   };
 
@@ -52,7 +51,7 @@ const HeroBanner = () => {
               onChange={(e) => setQuery(e.target.value)}
               onKeyUp={searchQueryHandler}
             />
-            <button>Search</button>
+            <button onClick={() => navigate(`/search/${query}`)}>Search</button>
           </div>
         </div>
       </ContentWrapper>
