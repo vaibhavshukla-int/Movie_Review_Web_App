@@ -1,4 +1,4 @@
-@import '../../mixins.scss';
+@import "../../mixins.scss";
 
 .footer {
   background-color: var(--black3);
@@ -56,6 +56,7 @@
       height: 50px;
       border-radius: 50%;
       background-color: var(--black3);
+      color: white;
       display: flex;
       align-items: center;
       justify-content: center;

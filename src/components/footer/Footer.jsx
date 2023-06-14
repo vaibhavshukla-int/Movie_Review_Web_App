@@ -1,11 +1,6 @@
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaTwitter,
-  FaLinkedin,
-} from 'react-icons/fa';
-import ContentWrapper from '../contentWrapper/ContentWrapper';
-import './footer.scss';
+import { FaGithub, FaInstagram, FaTwitter, FaLinkedin } from "react-icons/fa";
+import ContentWrapper from "../contentWrapper/ContentWrapper";
+import "./footer.scss";
 
 const Footer = () => {
   return (
@@ -28,18 +23,38 @@ const Footer = () => {
         </div>
 
         <div className="socialIcons">
-          <span className="icon">
-            <FaFacebookF />
-          </span>
-          <span className="icon">
+          <a
+            href="https://instagram.com/vaibhav_shukla_here?igshid=MzNlNGNkZWQ4Mg=="
+            target="_blank"
+            rel="noreferrer"
+            className="icon"
+          >
             <FaInstagram />
-          </span>
-          <span className="icon">
+          </a>
+          <a
+            href="https://github.com/vaibhavshukla-int"
+            target="_blank"
+            rel="noreferrer"
+            className="icon"
+          >
+            <FaGithub />
+          </a>
+          <a
+            href="https://twitter.com/imShuklaVaibhav"
+            target="_blank"
+            rel="noreferrer"
+            className="icon"
+          >
             <FaTwitter />
-          </span>
-          <span className="icon">
+          </a>
+          <a
+            href="https://www.linkedin.com/in/vaibhav-shukla-here"
+            target="_blank"
+            rel="noreferrer"
+            className="icon"
+          >
             <FaLinkedin />
-          </span>
+          </a>
         </div>
       </ContentWrapper>
     </footer>
